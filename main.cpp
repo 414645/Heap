@@ -7,17 +7,22 @@ using namespace std;
 //by Ryan Veith
 //This is a max heap
 
-void remove(int &heap);
-void heapify(int &heap);
-void print(int heap);
+void remove(int heap[101]);
+void heapify(int heap[101], int index);
+void print(int heap[101]);
 
 int main() {
   cout << "hello world" << endl;
   bool quit = false;
   char input[80];
+  int num = 0;
 
   //our heap (101 since ignoring 0th spot)
   int heap[101];
+  for (int a = 0; a < 101; a++) {
+    heap[a] = 0;
+  }
+  
   while (quit == false) {
     cin.getline(input, 80);
     if (strcmp (input, "HELP") == 0 || strcmp (input, "?") == 0) {
@@ -37,13 +42,22 @@ int main() {
 	  for (int a = 0; a < 100; a++) {
 	    //clear input first since if we reach end of file
 	    //input will not be overriden
-	    strcpy (input, "");
-	    myfile >> input;
-	    
-	    //add it
-	    //for final thing have an if input != to "" before adding
-	    cout << input << endl;
-	    //reheap
+	    num = 0;
+	    myfile >> num;
+	    //check if its emptry
+	    if (num != 0) {
+
+	      //find first empty spot and add it 
+	      for (int a = 1; a < 101; a++) {
+		if (heap[a] == 0) {
+		  heap[a] = num;
+		  //reheap
+		  heapify(heap, a);
+		  a = 101;
+		}
+	      }
+
+	    }
 	  } 
 	}
 	else {
@@ -58,7 +72,10 @@ int main() {
 	for (int a = 0; a < 100; a++) {
 	  cin.getline(input, 80);
 	  if (strcmp (input, "q") != 0) {
+
 	    //add it
+	    num = 0;
+	    cin >> num;
 	    cout << input << endl;
 	    //reheap
 	    
@@ -73,11 +90,13 @@ int main() {
       cout << "del" << endl;
       //delete largest element and cout it
     }
-        if (strcmp (input, "CLEAR") == 0) {
+    if (strcmp (input, "CLEAR") == 0) {
       cout << "clear" << endl;
       //delete largest element and cout it until heap is empty
     }
-    
+    if (strcmp (input, "PRINT") == 0) {
+      print(heap);
+    }
     if (strcmp (input, "QUIT") == 0) {
       quit = true;
     }
@@ -85,14 +104,24 @@ int main() {
 }
 
 
-void remove(int &heap) {
-  //remove biggest thing and cout it 
+void remove(int heap[101]) {
+  //remove biggest thing and cout it
+  //then heapify
 }
 
-void heapify(int &heap) {
+void heapify(int heap[101], int index) {
   //go reorganize the heap so it is biggest to smallest
+  //loops will need to be added
+  if (index = 1) {
+    //top was replaced so check each of the children
+    //and swap with the bigger one (as long as it is > then you)
+  }
+  else {
+    //we are going up the heap if this is bigger then the parent swap!
+  }
 }
 
-void print(int heap) {
+void print(int heap[101]) {
   //print it is some way that lets you see children
+  cout << "heap: " << heap[1] << endl;
 }

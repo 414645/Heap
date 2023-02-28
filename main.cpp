@@ -119,6 +119,7 @@ void heapify(int heap[101], int index) {
     cout << "top down" << endl;
     bool clock = true;
     while (clock == true) {
+      cout << "index: " << index << endl;
       if(heap[index] < heap[2*index] || heap[index] < heap[2*index+1]) {
 	int temp;
 	if (heap[2*index] > heap[2*index+1]) {
@@ -160,8 +161,18 @@ void heapify(int heap[101], int index) {
 
 void print(int heap[101]) {
   //print it is some way that lets you see children
-  cout << "heap: " << heap[1] << endl;
+  //cout << "heap: " << heap[1] << endl;
+  int b = 0;
+  int d = 0;
   for (int a = 1; a < 101; a++) {
-    cout << heap[a] << endl;
+    for(int c = b; c < 32; c++) {
+      cout << " ";
+    }
+    cout << heap[a];
+    if (a == d + pow(2,b)) {
+      cout << endl;
+      b++;
+      d = d + pow(2,b);
+    }
   }
 }

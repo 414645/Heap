@@ -159,20 +159,42 @@ void heapify(int heap[101], int index) {
   }
 }
 
+/*
 void print(int heap[101]) {
   //print it is some way that lets you see children
-  //cout << "heap: " << heap[1] << endl;
+  //this is one way that I am trying to do it, it does not fully work
   int b = 0;
   int d = 0;
-  for (int a = 1; a < 101; a++) {
-    for(int c = b; c < 32; c++) {
+  for(int e = 6; e > d;  e--) {
+    for(int e = 6; e > d;  e--) {
       cout << " ";
     }
+  }
+  
+  for (int a = 1; a < 101; a++) {
     cout << heap[a];
-    if (a == d + pow(2,b)) {
-      cout << endl;
-      b++;
-      d = d + pow(2,b);
+    for(int e = d; e < 6; e++) {
+      for(int e = d; e < 6; e++) {
+	cout << " ";
+      }
     }
+    b++;
+    if (b == pow(2,d)) {
+      cout << endl;
+      d++;
+      for(int e = 6; e > d;  e--) {
+	for(int e = 6; e > d;  e--) {
+	  cout << " ";
+	}
+      }
+      b = 0;
+    }
+  }
+}
+*/
+
+void print(int heap[101]) {
+  for (int a = 1; a < 101; a++) {
+    cout << heap[a] << endl;;
   }
 }

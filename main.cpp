@@ -89,12 +89,41 @@ int main() {
       }
     }
     if (strcmp (input, "DELETE") == 0) {
-      cout << "del" << endl;
+      //cout << "del" << endl;
       //delete largest element and cout it
+      int temp = 0;
+      for(int a = 1; a < 102; a++) {
+	if (heap[a] == 0) {
+	  cout << heap[a] << "at:" << a << endl;
+	  temp = a-1;
+	  a = 102;
+	  cout << "t" << temp << ":" << heap[temp]  << endl;
+	}
+      }
+      cout << heap[1] << endl;
+      heap[1] = heap[temp];
+      heap[temp] = 0;
+      //reorganize
+      heapify(heap, 1);
     }
     if (strcmp (input, "CLEAR") == 0) {
-      cout << "clear" << endl;
-      //delete largest element and cout it until heap is empty
+      //cout << "clear" << endl;
+      while (heap[1] != 0) {
+	int temp = 0;
+	for(int a = 1; a < 102; a++) {
+	  if (heap[a] == 0) {
+	    cout << heap[a] << "at:" << a << endl;
+	    temp = a-1;
+	    a = 102;
+	    cout << "t" << temp << ":" << heap[temp]  << endl;
+	  }
+	}
+	cout << heap[1] << endl;
+	heap[1] = heap[temp];
+	heap[temp] = 0;
+	//reorganize
+      heapify(heap, 1);
+      }
     }
     if (strcmp (input, "PRINT") == 0) {
       print(heap);
@@ -120,19 +149,23 @@ void heapify(int heap[101], int index) {
     bool clock = true;
     while (clock == true) {
       cout << "index: " << index << endl;
+      cout << "value: " << heap[index] << endl;
+      cout << heap[2*index] << " " << heap[2*index+1] << endl;
+      
       if(heap[index] < heap[2*index] || heap[index] < heap[2*index+1]) {
 	int temp;
 	if (heap[2*index] > heap[2*index+1]) {
 	  temp = heap[2*index];
-	  heap[2*index] = heap[2*index+1];
-	  heap[2*index+1] = temp;
+	  heap[2*index] = heap[index];
+	  heap[index] = temp;
+	  
 
 	  index = 2*index;
 	}
 	else {
 	  temp = heap[2*index+1];
-	  heap[2*index+1] = heap[2*index];
-	  heap[2*index] = temp;
+	  heap[2*index+1] = heap[index];
+	  heap[index] = temp;
 
 	  index = 2*index+1;
 	}		

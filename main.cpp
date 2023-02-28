@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <cmath>
 
 using namespace std;
 
@@ -110,18 +111,33 @@ void remove(int heap[101]) {
 }
 
 void heapify(int heap[101], int index) {
+  cout << "heapifiying" << endl;
   //go reorganize the heap so it is biggest to smallest
   //loops will need to be added
   if (index = 1) {
+    cout << "top down" << endl;
     //top was replaced so check each of the children
     //and swap with the bigger one (as long as it is > then you)
   }
   else {
+    cout << "recursion" << endl;
     //we are going up the heap if this is bigger then the parent swap!
+    if (heap[index] > heap[(int)floor(index/2)]) {
+      //swap!
+      int temp = heap[index];
+      heap[index] = heap[(int)floor(index/2)];
+      heap[(int)floor(index/2)] = temp;
+      //set new index
+      index = floor(index/2);
+      heapify(heap, index);
+    }
   }
 }
 
 void print(int heap[101]) {
   //print it is some way that lets you see children
   cout << "heap: " << heap[1] << endl;
+  for (int a = 1; a < 101; a++) {
+    cout << heap[a] << endl;
+  }
 }

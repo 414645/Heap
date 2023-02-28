@@ -53,6 +53,7 @@ int main() {
 		if (heap[a] == 0) {
 		  heap[a] = num;
 		  //reheap
+		  cout << a << endl;
 		  heapify(heap, a);
 		  a = 101;
 		}
@@ -114,7 +115,7 @@ void heapify(int heap[101], int index) {
   cout << "heapifiying" << endl;
   //go reorganize the heap so it is biggest to smallest
   //loops will need to be added
-  if (index = 1) {
+  if (index == 1) {
     cout << "top down" << endl;
     //top was replaced so check each of the children
     //and swap with the bigger one (as long as it is > then you)

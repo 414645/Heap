@@ -117,6 +117,29 @@ void heapify(int heap[101], int index) {
   //loops will need to be added
   if (index == 1) {
     cout << "top down" << endl;
+    bool clock = true;
+    while (clock == true) {
+      if(heap[index] < heap[2*index] || heap[index] < heap[2*index+1]) {
+	int temp;
+	if (heap[2*index] > heap[2*index+1]) {
+	  temp = heap[2*index];
+	  heap[2*index] = heap[2*index+1];
+	  heap[2*index+1] = temp;
+
+	  index = 2*index;
+	}
+	else {
+	  temp = heap[2*index+1];
+	  heap[2*index+1] = heap[2*index];
+	  heap[2*index] = temp;
+
+	  index = 2*index+1;
+	}		
+      }
+      else {
+	clock = false;
+      }
+    }
     //top was replaced so check each of the children
     //and swap with the bigger one (as long as it is > then you)
   }

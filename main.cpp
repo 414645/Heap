@@ -68,24 +68,26 @@ int main() {
 	}
       }
       else {
-	cout << "enter the numbers you wish to add (q to exit)" << endl;
+	cout << "enter the number you wish to add" << endl;
 	//add from console
-	//take up to 100 numbers
-	for (int a = 0; a < 100; a++) {
-	  cin.getline(input, 80);
-	  if (strcmp (input, "q") != 0) {
-
-	    //add it
-	    num = 0;
-	    cin >> num;
-	    cout << input << endl;
-	    //reheap
+	//(don't) take up to 100 numbers
+	//I am not messing with cin
+	//for (int a = 0; a < 100; a++) {
+	//cin.getline(input, 80);
+	//if (strcmp (input, "q") != 0) {
+	
+	//add it
+	num = 0;
+        cin  >> num;
+	cout << num << endl;
+	//reheap
 	    
-	  }
-	  else {
-	    a = 100;
-	  }
-	}
+	//}
+	//else {
+	//cout << "detedted q" << endl;
+	//a = 100;
+	//}
+	//}
       }
     }
     if (strcmp (input, "DELETE") == 0) {
@@ -94,31 +96,32 @@ int main() {
       int temp = 0;
       for(int a = 1; a < 102; a++) {
 	if (heap[a] == 0) {
-	  cout << heap[a] << "at:" << a << endl;
+	  //cout << heap[a] << "at:" << a << endl;
 	  temp = a-1;
 	  a = 102;
-	  cout << "t" << temp << ":" << heap[temp]  << endl;
+	  //cout << "t" << temp << ":" << heap[temp]  << endl;
 	}
       }
-      cout << heap[1] << endl;
+      //cout << heap[1] << endl;
       heap[1] = heap[temp];
       heap[temp] = 0;
       //reorganize
       heapify(heap, 1);
     }
+    //this is the same as delete but in a while loop
     if (strcmp (input, "CLEAR") == 0) {
       //cout << "clear" << endl;
       while (heap[1] != 0) {
 	int temp = 0;
 	for(int a = 1; a < 102; a++) {
 	  if (heap[a] == 0) {
-	    cout << heap[a] << "at:" << a << endl;
+	    //cout << heap[a] << "at:" << a << endl;
 	    temp = a-1;
 	    a = 102;
-	    cout << "t" << temp << ":" << heap[temp]  << endl;
+	    //cout << "t" << temp << ":" << heap[temp]  << endl;
 	  }
 	}
-	cout << heap[1] << endl;
+	//cout << heap[1] << endl;
 	heap[1] = heap[temp];
 	heap[temp] = 0;
 	//reorganize

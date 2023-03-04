@@ -53,7 +53,7 @@ int main() {
 		if (heap[a] == 0) {
 		  heap[a] = num;
 		  //reheap
-		  cout << a << endl;
+		  //cout << a << endl;
 		  heapify(heap, a);
 		  a = 101;
 		}
@@ -102,7 +102,7 @@ int main() {
 	  //cout << "t" << temp << ":" << heap[temp]  << endl;
 	}
       }
-      //cout << heap[1] << endl;
+      cout << heap[1] << endl;
       heap[1] = heap[temp];
       heap[temp] = 0;
       //reorganize
@@ -121,7 +121,7 @@ int main() {
 	    //cout << "t" << temp << ":" << heap[temp]  << endl;
 	  }
 	}
-	//cout << heap[1] << endl;
+	cout << heap[1] << endl;
 	heap[1] = heap[temp];
 	heap[temp] = 0;
 	//reorganize
@@ -144,16 +144,15 @@ void remove(int heap[101]) {
 }
 
 void heapify(int heap[101], int index) {
-  cout << "heapifiying" << endl;
   //go reorganize the heap so it is biggest to smallest
   //loops will need to be added
   if (index == 1) {
-    cout << "top down" << endl;
+    //cout << "top down" << endl;
     bool clock = true;
     while (clock == true) {
-      cout << "index: " << index << endl;
-      cout << "value: " << heap[index] << endl;
-      cout << heap[2*index] << " " << heap[2*index+1] << endl;
+      //cout << "index: " << index << endl;
+      //cout << "value: " << heap[index] << endl;
+      //cout << heap[2*index] << " " << heap[2*index+1] << endl;
       
       if(heap[index] < heap[2*index] || heap[index] < heap[2*index+1]) {
 	int temp;
@@ -181,7 +180,7 @@ void heapify(int heap[101], int index) {
     //and swap with the bigger one (as long as it is > then you)
   }
   else {
-    cout << "recursion" << endl;
+    //cout << "recursion" << endl;
     //we are going up the heap if this is bigger then the parent swap!
     if (heap[index] > heap[(int)floor(index/2)]) {
       //swap!

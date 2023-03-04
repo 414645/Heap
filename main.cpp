@@ -13,7 +13,9 @@ using namespace std;
 void heapify(int heap[101], int index);
 
 //cout the heap in a readable manner
-void print(int heap[101]);
+void print(int heap[101], int current, int size, int tab);
+//this print does not let you see children
+void printBad(int heap[101]);
 
 int main() {
   cout << "Type HELP for a list of commands" << endl;
@@ -142,7 +144,7 @@ int main() {
       }
     }
     if (strcmp (input, "PRINT") == 0) {
-      print(heap);
+      print(heap, 1, 101, 0);
     }
     if (strcmp (input, "QUIT") == 0) {
       quit = true;
@@ -201,42 +203,33 @@ void heapify(int heap[101], int index) {
   }
 }
 
-/*
-void print(int heap[101]) {
-  //print it is some way that lets you see children
-  //this is one way that I am trying to do it, it does not fully work
-  int b = 0;
-  int d = 0;
-  for(int e = 6; e > d;  e--) {
-    for(int e = 6; e > d;  e--) {
-      cout << " ";
-    }
-  }
-  
+
+void printBad(int heap[101]) {
+  //print somhow
   for (int a = 1; a < 101; a++) {
-    cout << heap[a];
-    for(int e = d; e < 6; e++) {
-      for(int e = d; e < 6; e++) {
-	cout << " ";
-      }
-    }
-    b++;
-    if (b == pow(2,d)) {
-      cout << endl;
-      d++;
-      for(int e = 6; e > d;  e--) {
-	for(int e = 6; e > d;  e--) {
-	  cout << " ";
-	}
-      }
-      b = 0;
-    }
+    cout << heap[a] << endl;
   }
 }
-*/
 
-void print(int heap[101]) {
-  for (int a = 1; a < 101; a++) {
-    cout << heap[a] << endl;;
+
+void print(int heap[101], int current, int size, int tab) {
+  //print it is some way that lets you see children
+
+  if (current < size) {
+    print(heap, current*2, size, tab+1);
+    
+    for (int a = 0; a < tab; a++) {
+      cout << "    ";
+    }
+    cout << heap[current] << endl;
+    if (current < size) {
+      print(heap, current*2 + 1, size, tab+1);
+    }
   }
+
+  //my print when building this thing put in for nostalgia
+  //if (current == 1) {
+  //  cout << "done" << endl;
+  //  printBad(heap);
+  //}
 }

@@ -79,8 +79,18 @@ int main() {
 	//add it
 	num = 0;
         cin  >> num;
-	cout << num << endl;
-	//reheap
+	  
+	//same code as above	
+	//find first empty spot and add it 
+	for (int a = 1; a < 101; a++) {
+	  if (heap[a] == 0) {
+	    heap[a] = num;
+	    //reheap
+	    //cout << a << endl;
+	    heapify(heap, a);
+	    a = 101;
+	  }
+	}
 	    
 	//}
 	//else {

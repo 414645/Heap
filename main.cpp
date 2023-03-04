@@ -32,7 +32,11 @@ int main() {
   while (quit == false) {
     cin.getline(input, 80);
     if (strcmp (input, "HELP") == 0 || strcmp (input, "?") == 0) {
-      cout << "commands are ADD, DELETE, CLEAR, and QUIT" << endl;
+      cout << "commands are ADD, DELETE, CLEAR, PRINT and QUIT" << endl;
+      cout << "ADD lets you add a single number or add form a file" << endl;
+      cout << "DELETE couts and removes the biggest number" << endl;
+      cout << "CLEAR does delete and then heapify until list is empty" << endl;
+      cout << "PRINT lets you view the heap, and QUIT exits programm" << endl;
     }
     if (strcmp (input, "ADD") == 0) {
       cout << "would you like add from a file? (y/n)" << endl;

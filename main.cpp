@@ -8,12 +8,15 @@ using namespace std;
 //by Ryan Veith
 //This is a max heap
 
-void remove(int heap[101]);
+
+//resort heap (either up from index or if index = 1 down
 void heapify(int heap[101], int index);
+
+//cout the heap in a readable manner
 void print(int heap[101]);
 
 int main() {
-  cout << "hello world" << endl;
+  cout << "Type HELP for a list of commands" << endl;
   bool quit = false;
   char input[80];
   int num = 0;
@@ -145,12 +148,6 @@ int main() {
       quit = true;
     }
   }
-}
-
-
-void remove(int heap[101]) {
-  //remove biggest thing and cout it
-  //then heapify
 }
 
 void heapify(int heap[101], int index) {
